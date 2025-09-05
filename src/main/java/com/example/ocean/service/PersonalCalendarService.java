@@ -6,7 +6,7 @@ import com.example.ocean.domain.MentionNotification;
 import com.example.ocean.domain.Place;
 import com.example.ocean.dto.request.*;
 import com.example.ocean.dto.response.*;
-import com.example.ocean.repository.*;
+import com.example.ocean.mapper.*;
 import com.example.ocean.util.S3Uploader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;

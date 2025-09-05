@@ -1,8 +1,7 @@
-package com.example.ocean.repository;
+package com.example.ocean.mapper;
 
 
 import com.example.ocean.domain.File;
-import com.example.ocean.domain.Workspace;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

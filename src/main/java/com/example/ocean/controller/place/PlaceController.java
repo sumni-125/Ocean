@@ -3,7 +3,7 @@ package com.example.ocean.controller.place;
 import com.example.ocean.domain.Event;
 import com.example.ocean.domain.Place;
 import com.example.ocean.dto.response.PlaceInfoResponse;
-import com.example.ocean.repository.PlaceRepository;
+import com.example.ocean.mapper.PlaceRepository;
 import com.example.ocean.service.PlaceService;
 import com.example.ocean.service.WorkspaceService;
 import com.example.ocean.security.oauth.UserPrincipal;

@@ -1,4 +1,4 @@
-package com.example.ocean.repository;
+package com.example.ocean.mapper;
 
 import com.example.ocean.domain.MentionNotification;
 import org.apache.ibatis.annotations.Mapper;

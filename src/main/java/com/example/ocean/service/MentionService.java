@@ -1,7 +1,7 @@
 package com.example.ocean.service;
 
 import com.example.ocean.domain.MentionNotification;
-import com.example.ocean.repository.MentionNotificationRepository;
+import com.example.ocean.mapper.MentionNotificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

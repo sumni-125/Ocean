@@ -3,7 +3,7 @@ package com.example.ocean.service;
 import com.example.ocean.domain.Event;
 import com.example.ocean.domain.Place;
 import com.example.ocean.dto.response.PlaceInfoResponse;
-import com.example.ocean.repository.PlaceRepository;
+import com.example.ocean.mapper.PlaceRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

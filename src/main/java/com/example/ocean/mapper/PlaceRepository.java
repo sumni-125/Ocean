@@ -1,4 +1,4 @@
-package com.example.ocean.repository;
+package com.example.ocean.mapper;
 
 import com.example.ocean.domain.Event; // Event 도메인 추가
 import com.example.ocean.domain.Place;

@@ -2,15 +2,14 @@ package com.example.ocean;
 
 import com.example.ocean.dto.response.MailInfo;
 import com.example.ocean.mapper.WorkspaceMapper;
-import com.example.ocean.repository.CalendarEventRepository;
+import com.example.ocean.mapper.CalendarEventRepository;
 
-import com.example.ocean.repository.EventAttendencesRepository;
-import com.example.ocean.repository.WorkspaceMemberRepository;
+import com.example.ocean.mapper.EventAttendencesRepository;
+import com.example.ocean.mapper.WorkspaceMemberRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
