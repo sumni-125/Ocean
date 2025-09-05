@@ -5,6 +5,7 @@ import com.example.ocean.domain.WorkspaceDept;
 import com.example.ocean.domain.WorkspaceMember;
 import com.example.ocean.service.WorkspaceService;
 import com.example.ocean.security.oauth.UserPrincipal;
+import com.example.ocean.util.S3Uploader;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -37,8 +38,9 @@ public class WorkspacePageController {
 
     private final WorkspaceService workspaceService;
 
-    @Value("${file.upload-dir}")
+    @Value("${app.s3.profile-dir}")
     private String uploadDir;
+    private S3Uploader s3Uploader;
 
     @GetMapping("/workspace")
     public String workspaceListPage(@AuthenticationPrincipal UserPrincipal userPrincipal,
@@ -297,7 +299,7 @@ public class WorkspacePageController {
         if (file.isEmpty()) {
             return null;
         }
-
+/*
         // ⭐ 하드코딩된 경로 대신 주입받은 uploadDir 사용
         File uploadDirectory = new File(uploadDir + "/profiles/");
         if (!uploadDirectory.exists()) {
@@ -309,10 +311,11 @@ public class WorkspacePageController {
         String savedFileName = UUID.randomUUID().toString() + ext;
 
         File destinationFile = new File(uploadDirectory, savedFileName);
-        file.transferTo(destinationFile);
+        file.transferTo(destinationFile);*/
+        String savedFilePath = s3Uploader.upload(file, uploadDir);
 
         // ⭐ 웹 경로 반환
-        return "/images/profiles/" + savedFileName;
+        return savedFilePath;
     }
 
     @GetMapping("/workspace/{workspaceCd}")
