@@ -73,7 +73,7 @@ public class LnbController {
             log.info("워크스페이스 메인 페이지 접근: workspaceCd={}, userId={}",
                     workspaceCd, userPrincipal.getId());
 
-            return "/workspace/wsmain";
+            return "workspace/wsmain";
 
         } catch (Exception e) {
             log.error("워크스페이스 메인 페이지 로드 중 오류", e);

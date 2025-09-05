@@ -40,7 +40,7 @@ public class WorkspacePageController {
 
     @Value("${app.s3.profile-dir}")
     private String uploadDir;
-    private S3Uploader s3Uploader;
+    private  S3Uploader s3Uploader;
 
     @GetMapping("/workspace")
     public String workspaceListPage(@AuthenticationPrincipal UserPrincipal userPrincipal,
