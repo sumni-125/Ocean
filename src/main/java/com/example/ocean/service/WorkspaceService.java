@@ -7,8 +7,10 @@ import com.example.ocean.domain.WorkspaceMember;
 import com.example.ocean.mapper.MemberTransactionMapper;
 import com.example.ocean.mapper.WorkspaceMapper;
 import com.example.ocean.security.oauth.UserPrincipal;
+import com.example.ocean.util.S3Uploader;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,33 +30,23 @@ import java.util.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.stream.Collectors;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class WorkspaceService {
 
-    @Autowired
-    private JavaMailSender emailSender;
-
     private final WorkspaceMapper workspaceMapper;
-
     private final MemberTransactionMapper transactionMapper;
-
-    public WorkspaceService(WorkspaceMapper workspaceMapper,
-                            MemberTransactionMapper transactionMapper) {
-        this.workspaceMapper = workspaceMapper;
-        this.transactionMapper = transactionMapper;
-    }
+    private final JavaMailSender emailSender;
+    private final S3Uploader s3Uploader;
 
     public List<Workspace> getWorkspacesByUserId(String userId) {
         return workspaceMapper.findWorkspacesByUserId(userId);
     }
-
-    /*
-    public void createWorkspace(Workspace workspace) {
-        workspaceMapper.createWorkspace(workspace);
-    }
-    */
 
     public void joinWorkspace(String workspaceCd, String userId, String userRole, String activeState) {
         workspaceMapper.addUserToWorkspace(userId, workspaceCd, userRole, activeState);
@@ -135,7 +127,7 @@ public class WorkspaceService {
         member.setUserRole("OWNER");
         workspaceMapper.insertMember(member);
     }
-    @Value("${file.upload-dir}")
+    @Value("${app.s3.profile-dir}")
     private String uploadDir;
 
     @Transactional
@@ -155,7 +147,7 @@ public class WorkspaceService {
                     file.getOriginalFilename(), file.getSize());
             String originalFilename = file.getOriginalFilename();
             String savedFilename = UUID.randomUUID().toString() + "_" + originalFilename;
-
+            /*
             // ⚠️ 수정된 부분: File 객체를 사용하여 경로 조합
             File uploadDirectory = new File(uploadDir);
             if (!uploadDirectory.exists()) {
@@ -168,7 +160,10 @@ public class WorkspaceService {
             log.info("파일 저장 경로: {}", destinationFile.getAbsolutePath());
 
             file.transferTo(destinationFile);
-            savedFilePath = "/images/workspace/" + savedFilename;
+            savedFilePath = "/images/workspace/" + savedFilename;*/
+
+            //s3 버킷에 저장
+            savedFilePath = s3Uploader.upload(file, uploadDir);
 
             log.info("파일 업로드 완료 - 저장 경로: {}", savedFilePath);
         }

@@ -43,8 +43,7 @@ public class WorkspaceController {
     public ResponseEntity<List<Workspace>> getMyWorkspaces(
             @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
-        List<Workspace> workspaces = workspaceService
-                .getWorkspacesByUserId(userPrincipal.getId());
+        List<Workspace> workspaces = workspaceService.getWorkspacesByUserId(userPrincipal.getId());
 
         return ResponseEntity.ok(workspaces);
     }
