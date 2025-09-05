@@ -16,21 +16,22 @@ import java.util.Collections;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${app.frontend.url:https://ocean-app.click}")
+    @Value("${app.frontend.url:https://ocean-team.click}")
     private String frontendUrl;
 
-    @Value("${file.upload-dir}")
-    private String uploadDir;
+    //@Value("${file.upload-dir}")
+    //private String uploadDir;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins(frontendUrl, "https://ocean-app.click", "http://localhost:8080")
+                .allowedOrigins(frontendUrl, "https://ocean-team.click", "http://localhost:8080")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
                 .maxAge(3600);
     }
+    /*
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // '/images/workspace/**' 패턴의 URL 요청이 오면
@@ -41,5 +42,5 @@ public class WebConfig implements WebMvcConfigurer {
         // ⭐ 프로필 이미지 경로 추가
         registry.addResourceHandler("/images/profiles/**")
                 .addResourceLocations("file:///" + uploadDir + "/profiles/");
-    }
+    }*/
 }
