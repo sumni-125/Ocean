@@ -17,12 +17,14 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use('/media', express.static('public'));
 
-//const server = http.createServer(app);
+//http 서버 변경
+const server = http.createServer(app);
+
 // HTTPS 서버 생성
-const server = https.createServer({
-  key: fs.readFileSync('./certs/key.pem'),
-  cert: fs.readFileSync('./certs/cert.pem')
-}, app);
+//const server = https.createServer({
+//  key: fs.readFileSync('./certs/key.pem'),
+//  cert: fs.readFileSync('./certs/cert.pem')
+//}, app);
 
 //const io = new Server(server, {
   //cors: {
