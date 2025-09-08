@@ -288,7 +288,7 @@
                     : 'wss://ocean-team.click/media';
 
                 socket = io(serverUrl, {
-                    path: "/media/socket.io/",
+                    path: "/socket.io",
                     transports: ['websocket'],
                     reconnection: true
                 });
