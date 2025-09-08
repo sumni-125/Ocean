@@ -546,7 +546,7 @@ public class MeetingService {
      */
     private String getHostName(String hostId) {
         try {
-            String query = "SELECT USER_NAME FROM USERS WHERE USER_ID = :hostId";
+            String query = "SELECT USER_NM FROM USERS WHERE USER_ID = :hostId";
             Query nativeQuery = entityManager.createNativeQuery(query);
             nativeQuery.setParameter("hostId", hostId);
 
@@ -570,7 +570,7 @@ public class MeetingService {
             String query = """
             SELECT 
                 mp.USER_ID,
-                u.USER_NAME,
+                u.USER_NM,
                 wm.USER_IMG,
                 CASE WHEN mr.HOST_ID = mp.USER_ID THEN 'Y' ELSE 'N' END as IS_HOST,
                 mp.VIDEO_STATE,
