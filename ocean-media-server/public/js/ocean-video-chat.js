@@ -285,7 +285,7 @@
             return new Promise((resolve, reject) => {
                 const serverUrl = window.location.hostname === 'localhost'
                     ? 'https://localhost:3001'
-                    : 'https://192.168.100.16:3001';
+                    : 'wss://ocean-team.click/media';
 
                 socket = io(serverUrl, {
                     transports: ['websocket'],
@@ -1923,7 +1923,7 @@
                 });
 
                 // 요청 전송
-                const serverUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
+                const serverUrl = window.location.origin + '/media';
                 xhr.open('POST', `${serverUrl}/api/rooms/${roomId}/upload`);
                 xhr.send(formData);
 
@@ -1936,7 +1936,7 @@
 
         // 파일 다운로드
         function downloadFile(filename, originalName) {
-            const serverUrl = window.location.protocol + '//' + window.location.hostname + ':3001';
+            const serverUrl = window.location.origin + '/media';
             const downloadUrl = `${serverUrl}/api/rooms/${roomId}/files/${filename}`;
 
             // 다운로드 링크 생성
