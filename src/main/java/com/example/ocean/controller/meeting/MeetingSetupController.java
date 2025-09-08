@@ -305,7 +305,7 @@ public class MeetingSetupController {
             log.info("URL 인코딩 후 userProfileImg: {}", encodedProfileImg);
 
             String finalUrl = String.format(
-                    "%s/ocean-video-chat-complete.html?roomId=%s&meetingTitle=%s&peerId=%s&displayName=%s&userProfileImg=%s&workspaceId=%s",
+                    "%s/media/ocean-video-chat-complete.html?roomId=%s&meetingTitle=%s&peerId=%s&displayName=%s&userProfileImg=%s&workspaceId=%s",
                     mediaServerUrl, encodedRoomId, encodedTitle, encodedUserId,
                     encodedDisplayName, encodedProfileImg, encodedWorkspaceCd
             );
@@ -316,7 +316,7 @@ public class MeetingSetupController {
 
         } catch (Exception e) {
             log.error("URL 인코딩 실패", e);
-            return String.format("%s/ocean-video-chat-complete.html?roomId=%s&meetingTitle=%s",
+            return String.format("%s/media/ocean-video-chat-complete.html?roomId=%s&meetingTitle=%s",
                     mediaServerUrl, roomId, title != null ? title : "회의");
         }
     }
