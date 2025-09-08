@@ -46,7 +46,7 @@ import java.util.Map;
 @Slf4j
 public class SecurityConfig {
 
-    @Value("${app.frontend.url:https://ocean-app.click}")
+    @Value("${app.frontend.url:https://ocean-team.click}")
     private String frontendUrl;
 
     @Autowired
@@ -198,12 +198,12 @@ public class SecurityConfig {
         // 특정 도메인만 허용하도록 수정 (보안 강화)
         configuration.setAllowedOrigins(Arrays.asList(
                 frontendUrl,
-                "https://ocean-app.click",
+                "https://ocean-team.click",
                 "http://localhost:3000", // 개발용
                 "http://localhost:8080"  // 개발용
         ));
 
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList(
             "Authorization", "Content-Type", "X-Requested-With", 
             "Cache-Control", "Accept", "Origin", "X-Auth-Token"
