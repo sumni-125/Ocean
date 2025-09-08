@@ -15,6 +15,7 @@ app.use(cors());
 //정적 파일 서빙 하기
 app.use(express.static('public'));
 app.use(express.json());
+app.use('/media', express.static('public'));
 
 //const server = http.createServer(app);
 // HTTPS 서버 생성
