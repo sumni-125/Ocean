@@ -38,12 +38,11 @@ public class MeetingSetupController {
     private final WorkspaceService workspaceService;
     private final EmailService emailService;
 
-    @Value("${media.server.url:https://localhost:3001}")
+    @Value("${media.server.url}")
     private String mediaServerUrl;
 
-    @Value("${app.frontend.url:http://localhost:8080}")
-    private String frontendUrl;  // 클래스 상단에 추가
-
+    @Value("${app.frontend.url}")
+    private String frontendUrl;
     /**
      * 회의 준비 페이지 표시
      *
