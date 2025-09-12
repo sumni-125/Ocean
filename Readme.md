@@ -22,7 +22,7 @@
     <img src="https://github.com/sumni-125.png" width="80px" alt="이수민"/><br/>
     <sub><b>👩‍💻 이수민</b></sub><br/>
     <sub>Backend Developer</sub><br/>
-    <sub>📅 Calendar • 🪣 AWS S3</sub>
+    <sub>📅 Calendar • 🪣 AWS S3 • 📧AWS SES</sub>
   </td>
   <td align="center">
     <img src="https://github.com/Boseong00.png" width="80px" alt="김보성"/><br/>
