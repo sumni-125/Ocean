@@ -285,9 +285,10 @@
             return new Promise((resolve, reject) => {
                 const serverUrl = window.location.hostname === 'localhost'
                     ? 'https://localhost:3001'
-                    : 'https://'+window.location.hostname+':3001';
+                    : 'wss://ocean-team.click';
 
                 socket = io(serverUrl, {
+                    path: "/media/socket.io/",
                     transports: ['websocket'],
                     reconnection: true
                 });
