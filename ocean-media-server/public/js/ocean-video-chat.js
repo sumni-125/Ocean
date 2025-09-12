@@ -134,7 +134,7 @@
 
             // 상대 경로를 절대 경로로 변환
             if (!userProfileImg.startsWith('http')) {
-                userProfileImg = 'http://localhost:8080' + (userProfileImg.startsWith('/') ? userProfileImg : '/' + userProfileImg);
+                userProfileImg = (window.location.hostname === 'localhost' ? 'https://ocean-team.click' : 'https://' + window.location.hostname) + (userProfileImg.startsWith('/') ? userProfileImg : '/' + userProfileImg);
             }
 
             // 포트 수정 (필요시)
@@ -285,10 +285,9 @@
             return new Promise((resolve, reject) => {
                 const serverUrl = window.location.hostname === 'localhost'
                     ? 'https://localhost:3001'
-                    : 'wss://ocean-team.click/media';
+                    : 'https://'+window.location.hostname+':3001';
 
                 socket = io(serverUrl, {
-                    path: "/socket.io",
                     transports: ['websocket'],
                     reconnection: true
                 });
