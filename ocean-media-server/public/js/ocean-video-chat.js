@@ -693,8 +693,15 @@
                 // 로컬 비디오 표시
                 const localVideo = document.getElementById('localVideo');
                 localVideo.srcObject = localStream;
-                document.getElementById('localPlaceholder').style.display = 'none';
-                console.log(localVideo.srcObject);
+                //document.getElementById('localPlaceholder').style.display = 'none';
+                //console.log(localVideo.srcObject);
+                localVideo.play().catch(err => console.error("video play error:", err));
+
+                // ✅ placeholder 숨기기
+                const localPlaceholder = document.getElementById('localPlaceholder');
+                if (localPlaceholder) {
+                    localPlaceholder.style.display = 'none';
+                }
 
                 // ⭐ 입장 시 음소거 옵션 적용
                 if (meetingOptions.muteOnJoin) {
