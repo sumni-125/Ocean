@@ -695,6 +695,7 @@
                 localVideo.srcObject = localStream;
                 //document.getElementById('localPlaceholder').style.display = 'none';
                 //console.log(localVideo.srcObject);
+                localVideo.style.display = 'block';
                 localVideo.play().catch(err => console.error("video play error:", err));
 
                 // ✅ placeholder 숨기기
