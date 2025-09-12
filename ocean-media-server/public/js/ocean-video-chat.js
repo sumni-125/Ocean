@@ -1,7 +1,7 @@
         // 동적으로 SpringBoot 서버 URL 설정 하기
         const SPRING_BOOT_URL = window.location.hostname === 'localhost'
             ? 'http://localhost:8080'
-            : `http://${window.location.hostname}:8080`;
+            : `http://${window.location.hostname}`;
 
         // ===== UI 상태 관리 =====
         let isVideoOn = true;
@@ -694,6 +694,7 @@
                 const localVideo = document.getElementById('localVideo');
                 localVideo.srcObject = localStream;
                 document.getElementById('localPlaceholder').style.display = 'none';
+                console.log(localVideo.srcObject);
 
                 // ⭐ 입장 시 음소거 옵션 적용
                 if (meetingOptions.muteOnJoin) {
