@@ -45,7 +45,7 @@ public class EventAlarmMailScheduler {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new  MimeMessageHelper(message, false, "UTF-8");
 
-        helper.setFrom("dltnalssumin@gmail.com");
+        helper.setFrom("noreply@ocean-team.click");
         String[] recipients = mailInfo.getAttendencdEmails().toArray(new String[0]);
         helper.setTo(recipients);
         helper.setSubject(mailInfo.getTitle()+" 일정 알림입니다");
@@ -54,7 +54,7 @@ public class EventAlarmMailScheduler {
             <html>
             <body>
                 <h3>안녕하세요!</h3>
-                <p><a href="https://ocean-app.click/">Ocean</a>에서 %s의 일정을 확인하세요!</p>
+                <p><a href="https://ocean-team.click/">Ocean</a>에서 %s의 일정을 확인하세요!</p>
             </body>
             </html>
             """, mailInfo.getWorkspaceName());

@@ -390,11 +390,11 @@ public class WorkspaceService {
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new  MimeMessageHelper(message, false, "UTF-8");
-        helper.setFrom("dltnalssumin@gmail.com");//수정 필요
+        helper.setFrom("noreply@ocean-team.click");//수정 필요
         helper.setTo(email);
         helper.setSubject("워크스페이스 초대코드 안내");
         String content = String.format(
-                "아래 초대코드를 사용해 워크스페이스에 참여하세요!\n\n초대코드: %s\n참여 링크: localhost:8080\n",
+                "아래 초대코드를 사용해 워크스페이스에 참여하세요!\n\n초대코드: %s\n참여 링크: https://ocean-team.click\n",
                 inviteCode
         );
         helper.setText(content);

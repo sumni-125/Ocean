@@ -87,7 +87,7 @@ public class EmailService {
             %s님이 '%s' 회의에 초대했습니다.
             
             회의 참가 링크:
-            http://localhost:8080/meeting/join?roomId=%s
+            http://ocean-team.click/meeting/join?roomId=%s
             
             Ocean Team
             """, hostName, meetingTitle, roomId);
